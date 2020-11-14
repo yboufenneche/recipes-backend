@@ -77,7 +77,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<filename>recipes-backend</filename>
+		<finalName>recipes-backend</finalName>
 	</build>
 
 </project>
