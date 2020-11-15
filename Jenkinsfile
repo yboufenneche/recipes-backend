@@ -29,7 +29,7 @@ pipeline {
       steps {
         echo 'Dockerizing the application...'
         script {
-          dockerImage = docker.build recipes-backend + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
