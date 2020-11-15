@@ -1,4 +1,9 @@
 pipeline {
+  
+  environment {
+    registry = "yboufenneche/recipes-backend"
+    registryCredential = 'my_credentials'
+  } 
 
   agent any
   
@@ -23,6 +28,9 @@ pipeline {
     
       steps {
         echo 'Dockerizing the application...'
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
     
