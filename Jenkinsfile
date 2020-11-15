@@ -26,7 +26,7 @@ pipeline {
       }
     }
     
-    stage("Dockerize"){
+    stage("Push"){
     
       steps {
         echo 'Pushing the Docker image to Docker Hub...'
