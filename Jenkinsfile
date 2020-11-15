@@ -8,6 +8,7 @@ pipeline {
     
       steps {
         echo 'Building the application...'
+        sh 'mvn install'
       }
     }
       
@@ -18,10 +19,17 @@ pipeline {
       }
     }
       
-    stage("Deploy"){
+    stage("Dockerize"){
     
       steps {
-        echo 'Deploying the application...'
+        echo 'Dockerizing the application...'
+      }
+    }
+    
+    stage("Dockerize"){
+    
+      steps {
+        echo 'Pushing the Docker image to Docker Hub...'
       }
     }
   }
