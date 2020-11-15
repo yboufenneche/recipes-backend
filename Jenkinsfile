@@ -29,7 +29,7 @@ pipeline {
       steps {
         echo 'Dockerizing the application...'
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
@@ -38,6 +38,11 @@ pipeline {
     
       steps {
         echo 'Pushing the Docker image to Docker Hub...'
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
       }
     }
   }
