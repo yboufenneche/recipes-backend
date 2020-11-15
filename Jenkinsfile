@@ -2,7 +2,7 @@ pipeline {
   
   environment {
     registry = "yboufenneche/recipes-backend"
-    registryCredential = 'my_credentials'
+    registryCredential = 'docker_hub_credentials'
   } 
 
   agent any
@@ -43,6 +43,12 @@ pipeline {
             dockerImage.push()
           }
         }
+      }
+    }
+    
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
   }
